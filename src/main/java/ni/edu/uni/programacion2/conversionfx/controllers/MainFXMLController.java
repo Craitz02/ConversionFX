@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import ni.edu.uni.programacion2.conversionfx.App;
 
 /**
@@ -27,7 +28,7 @@ public class MainFXMLController implements Initializable {
     @FXML
     public Button btnCurrency;
     @FXML
-    public BorderPane pnlBorder;
+    public VBox vBoxCenter;
         
     /**
      * Initializes the controller class.
@@ -41,6 +42,7 @@ public class MainFXMLController implements Initializable {
     public void btnTemperatureAction(){
         try {
             Node node = App.loadFXML("TemperatureFXML");
+            vBoxCenter.getChildren().add(node);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
