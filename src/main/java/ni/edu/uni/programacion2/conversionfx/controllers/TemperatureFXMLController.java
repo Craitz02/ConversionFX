@@ -5,50 +5,42 @@
  */
 package ni.edu.uni.programacion2.conversionfx.controllers;
 
-import java.io.IOException;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
-import ni.edu.uni.programacion2.conversionfx.App;
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author JADPA26
  */
-public class MainFXMLController implements Initializable {
+public class TemperatureFXMLController implements Initializable {
     @FXML
-    public Button btnTemperature;
+    public TextField txtCelcius;
     @FXML
-    public Button btnCurrency;
+    public TextField txtFah;
     @FXML
-    public BorderPane pnlBorder;
-        
+    public Button btnCompute;
+    @FXML 
+    public Button btnClean;
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    @FXML
-    public void btnTemperatureAction(){
-        try {
-            Node node = App.loadFXML("TemperatureFXML");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
+    }    
     
     @FXML
-    public void btnCurrencyAction(){
+    public void btnComputeAction(){
         
     }
-    
+    @FXML
+    public void btnCleanAction(){
+        
+    }
 }
