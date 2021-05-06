@@ -42,6 +42,7 @@ public class MainFXMLController implements Initializable {
     public void btnTemperatureAction(){
         try {
             Node node = App.loadFXML("TemperatureFXML");
+            vBoxCenter.getChildren().clear();
             vBoxCenter.getChildren().add(node);
         } catch (IOException ex) {
             ex.printStackTrace();

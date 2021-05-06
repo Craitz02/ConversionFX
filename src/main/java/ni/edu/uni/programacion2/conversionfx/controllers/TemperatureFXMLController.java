@@ -5,14 +5,17 @@
  */
 package ni.edu.uni.programacion2.conversionfx.controllers;
 
-
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
+import ni.edu.uni.programacion2.conversionfx.core.TemperatureConvertion;
 
 /**
  * FXML Controller class
@@ -20,53 +23,91 @@ import javafx.scene.control.TextField;
  * @author JADPA26
  */
 public class TemperatureFXMLController implements Initializable {
-    private final DecimalFormat df = new DecimalFormat("#.0");
     @FXML
     public TextField txtCelcius;
     @FXML
     public TextField txtFah;
     @FXML
     public Button btnCompute;
-    @FXML 
+    @FXML
     public Button btnClean;
+    @FXML
+    public RadioButton rbtnCelcius;
+    @FXML
+    public ToggleGroup Temperature;
+    @FXML
+    public RadioButton rbtnFahren;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    @FXML
-    public void btnComputeAction(){
-        double c,f;
-        if(txtCelcius.getText().isBlank() && txtFah.getText().isBlank()){
-            return;
-        }
-        if(txtCelcius.getText().isBlank()){
-            c=0;
-        }else{
-            c=Double.parseDouble(txtCelcius.getText());
-            txtFah.setText(String.valueOf(df.format(convAF(c))));
-        }
-        if(txtFah.getText().isBlank()){
-            f=0;
-        }else{
-            f=Double.parseDouble(txtFah.getText());
-            txtCelcius.setText(String.valueOf(df.format(convAC(f))));
-        }
     }
+
     @FXML
-    public void btnCleanAction(){
+    public void btnComputeAction() {
+        float value;
+        if (rbtnCelcius.isSelected()) {
+            value = Float.parseFloat(txtCelcius.getText());
+            txtFah.setText(String.valueOf(TemperatureConvertion.CelciusToFah(value)));
+        }else if (rbtnFahren.isSelected()) {
+            value = Float.parseFloat(txtFah.getText());
+            txtCelcius.setText(String.valueOf(TemperatureConvertion.FahToCelcius(value)));
+        }
+        
+        
+//        if (txtCelcius.getText().isBlank() && txtFah.getText().isBlank()) {
+//            return;
+//        }
+//        if (txtCelcius.getText().isBlank()) {
+//            c = 0;
+//        } else {
+//            c = Float.parseFloat(txtCelcius.getText());
+//            txtFah.setText(String.valueOf(TemperatureConvertion.CelciusToFah(c)));
+//        }
+//        if (txtFah.getText().isBlank()) {
+//            f = 0;
+//        } else {
+//            f = Float.parseFloat(txtFah.getText());
+//            txtCelcius.setText(String.valueOf(TemperatureConvertion.FahToCelcius(f)));
+//        }
+    }
+
+    @FXML
+    public void btnCleanAction() {
+        cleanTextField();
+    }
+
+    @FXML
+    public void rbtnCelciusAction(ActionEvent event) {
+        activateTextField();
+    }
+
+    @FXML
+    public void rbtnFahrenAction(ActionEvent event) {
+        activateTextField();
+    }
+
+    public void activateTextField() {
+        if (rbtnCelcius.isSelected()) {
+            txtCelcius.setEditable(true);
+            txtFah.setEditable(false);
+            txtCelcius.requestFocus();
+
+        } else if (rbtnFahren.isSelected()) {
+            txtCelcius.setEditable(false);
+            txtFah.setEditable(true);
+            txtFah.requestFocus();
+        }
+        cleanTextField();
+
+    }
+
+    public void cleanTextField() {
         txtCelcius.setText("");
         txtFah.setText("");
     }
-    
-    private double convAC(double a) {
-        return (a - 32) * 5 / 9;
-    }
 
-    private double convAF(double a) {
-        return (a * 9 / 5) + 32;
-    }
 }
