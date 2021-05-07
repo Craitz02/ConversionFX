@@ -51,7 +51,13 @@ public class MainFXMLController implements Initializable {
     
     @FXML
     public void btnCurrencyAction(){
-        
+        try {
+            Node node = App.loadFXML("CurrencyFXML");
+            vBoxCenter.getChildren().clear();
+            vBoxCenter.getChildren().add(node);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
     
 }

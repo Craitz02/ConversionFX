@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1" fx:controller="ni.edu.uni.programacion2.conversionfx.controllers.CurrencyFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ni.edu.uni.programacion2.conversionfx.controllers.CurrencyFXMLController">
     <stylesheets>
         <URL value="@/ni/edu/uni/programacion2/conversionfx/styles/currencyfxml.css" />
     </stylesheets>
@@ -35,7 +35,7 @@
                     </rowConstraints>
                      <children>
                         <Label text="Tripos de Cambio: " GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                        <ComboBox prefHeight="25.0" prefWidth="324.0" GridPane.columnIndex="1">
+                        <ComboBox fx:id="cmbChange" prefHeight="25.0" prefWidth="324.0" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets right="80.0" />
                            </GridPane.margin>
